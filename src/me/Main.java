@@ -11,6 +11,8 @@ public class Main {
         input = JOptionPane.showInputDialog(null, "Please, input fragment to summarize.");
         TextSummarizer ts = new TextSummarizer();
         result = ts.summarizeText(input, 3);
+
+        //Making it safe
         SwingUtilities.invokeLater(() -> prepareGUI());
 
     }

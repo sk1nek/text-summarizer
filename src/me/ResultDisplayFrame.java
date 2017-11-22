@@ -8,16 +8,16 @@ public class ResultDisplayFrame extends JFrame{
 
     ResultDisplayFrame(String result, String input){
 
-        System.out.println("D" + result + input);
-
         setLayout(new BorderLayout());
 
         Double reduction = (result.length() * 1.0 / input.length());
 
+        //displaying percent reduction
         JLabel jl = new JLabel();
         jl.setText("Size has been reduced by " + String.format("%1$,.2f", reduction) + '%');
         add(jl, BorderLayout.NORTH);
 
+        //selectable text area with results
         JTextArea jta = new JTextArea();
         jta.setLineWrap(true);
         jta.setCaretPosition(0);
