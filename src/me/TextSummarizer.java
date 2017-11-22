@@ -19,13 +19,13 @@ public class TextSummarizer {
         for(String sentence: sentenceList)
             entryList.add(Map.entry(computeSentenceWeight(sentence, keywords), sentence));
 
-        Collections.sort(entryList, Comparator.comparing(Map.Entry::getKey));
+        entryList.sort(Comparator.comparing(Map.Entry::getKey));
 
         StringBuilder ret = new StringBuilder();
         int sentenceCount = maxSentences < sentenceList.size() ? maxSentences : sentenceList.size();
 
         for (int i = 0; i < sentenceCount; i++)
-            ret.append(' ' + entryList.get(i).getValue() + '.');
+            ret.append(' ').append(entryList.get(i).getValue()).append('.');
 
         return ret.toString();
 
