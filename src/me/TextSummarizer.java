@@ -14,31 +14,18 @@ public class TextSummarizer {
         ArrayList<String> sentenceList = new ArrayList<>();
         sentenceList.addAll(Arrays.asList(input.split(" *[\\.\\?!][\\'\"\\)\\]]* *")));
 
-//        sentenceList.forEach(System.out::println);
-
-//        SortedMap<Double, String> sentenceWeightMap = new TreeMap<>();
-//
-//        for (String sentence : sentenceList)
-//            sentenceWeightMap.put(computeSentenceWeight(sentence, keywords), sentence);
-
-
         List<Map.Entry<Double, String>> entryList = new ArrayList<>();
 
         for(String sentence: sentenceList)
             entryList.add(Map.entry(computeSentenceWeight(sentence, keywords), sentence));
 
-//        entryList.forEach(System.out::println);
-
-//        entryList.addAll(sentenceWeightMap.entrySet());
         Collections.sort(entryList, Comparator.comparing(Map.Entry::getKey));
 
         StringBuilder ret = new StringBuilder();
         int sentenceCount = maxSentences < sentenceList.size() ? maxSentences : sentenceList.size();
 
         for (int i = 0; i < sentenceCount; i++)
-            ret.append('*' + entryList.get(i).getValue() + '.');
-
-        System.out.println("Size reduced by :" + ret.length() / input.length() * 1.0 + '%');
+            ret.append(' ' + entryList.get(i).getValue() + '.');
 
         return ret.toString();
 
@@ -48,11 +35,6 @@ public class TextSummarizer {
         HashSet<String> ret = new HashSet<>();
 
         HashMap<String, Integer> countMap = new HashMap<>();
-
-//        for(String s: words){
-//            countMap.computeIfPresent(s, (k,v) -> v+1);
-//            countMap.computeIfAbsent(s, (key) -> countMap.put(s, 0));
-//        }
 
         for(String s: words){
             if(countMap.get(s) != null)
@@ -94,7 +76,6 @@ public class TextSummarizer {
         }
 
         if(windowStart > windowEnd) return 0;
-
         int windowSize = windowEnd - windowStart + 1;
 
         //number of keywords
@@ -103,10 +84,7 @@ public class TextSummarizer {
             if(keywords.contains(word))
                 keywordsCount++;
         }
-
         return keywordsCount * keywordsCount * 1.0 / windowSize;
-
-
 
     }
 

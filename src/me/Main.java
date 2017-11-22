@@ -4,10 +4,20 @@ import javax.swing.*;
 
 public class Main {
 
+    private static String result;
+    private static String input;
+
     public static void main(String[] args) {
-        String article = JOptionPane.showInputDialog(null, "Please, input fragment to summarize.");
+        input = JOptionPane.showInputDialog(null, "Please, input fragment to summarize.");
         TextSummarizer ts = new TextSummarizer();
-        System.out.println(ts.summarizeText(article, 5));
+        result = ts.summarizeText(input, 3);
+        SwingUtilities.invokeLater(() -> prepareGUI());
+
+    }
+
+
+    static void prepareGUI(){
+        JFrame jf = new ResultDisplayFrame(result, input);
     }
 
 }
