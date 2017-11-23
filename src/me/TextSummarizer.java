@@ -88,15 +88,4 @@ public class TextSummarizer {
 
     }
 
-    private ArrayList<String> tokenizeString(String s){
-        ArrayList<String> ret = new ArrayList<>();
-        StringTokenizer t = new StringTokenizer(s);
-        while(t.hasMoreTokens())
-            ret.add(t.nextToken());
-        return ret;
-
-    }
-
-
-
 }
